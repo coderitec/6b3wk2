@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div>
+            <ul>
+                <li>
+                    <label for="height">height</label>
+                    <input type="number" name="height" id="height" placeholder="your height in centimeters" min="100" max="180" required>
+                </li>
+                <li>
+                    <label for="weight">weight</label>
+                    <input type="number" name="weight" id="weight" placeholder="your weight in kg" min="20" max="150" required>
+                </li>
+                <li>
+                    <button>
+                        check bmi
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <p></p>
+        </div>
+    </main>
+
+    <script>
+        const weight = document.getElementById('weight')
+        const height = document.getElementById('height')
+        const para = document.querySelector('p')
+        const btn = document.querySelector('button')
+
+
+        function bmi(){
+            let w = weight.value
+            let h = height.value / 100
+            let status
+            const val = w / (h**2)
+            
+            
+            if(val >= 30){
+                status = 'obesity'
+            }
+
+            else if(val >= 25){
+                status = 'overweight'
+            }
+
+            else if(val >= 18.5){
+                status = 'normal weight'
+            }
+
+            else{
+                status = 'underweight'
+            }
+
+            return para.textContent = status
+        }
+
+        btn.addEventListener('click', bmi)
+    </script>
+</body>
+</html>
